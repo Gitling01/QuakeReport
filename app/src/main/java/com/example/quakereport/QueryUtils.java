@@ -61,16 +61,11 @@ JSONObject currentEarthquakeInFeatures = features.getJSONObject(i);
 
 JSONObject properties = currentEarthquakeInFeatures.getJSONObject("properties");
 
-double magnitude = Double.parseDouble(properties.getString("mag"));
+double magnitude = properties.getDouble("mag");
 String location = properties.getString("place");
-long time = Long.parseLong(properties.getString("time"));
+long time = properties.getLong("time");
 
-    Date dateObject = new Date(time);
-
-    SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
-    String dateToDisplay = dateFormatter.format(dateObject);
-
-Earthquake currentLine = new Earthquake(magnitude, location, dateToDisplay);
+Earthquake currentLine = new Earthquake(magnitude, location, time);
 earthquakes.add(currentLine);
 
 }
