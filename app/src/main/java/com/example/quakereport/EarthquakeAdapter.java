@@ -11,11 +11,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class EarthquakeAdapter extends BaseAdapter {
-//context and data source
+//context, data source and a string separator for the getView method
     private Context mContext;
     private ArrayList<Earthquake> mEarthquakes;
+    private static final String LOCATION_SEPARATOR = " of ";
 
     //constructor
     public EarthquakeAdapter(Context context, ArrayList<Earthquake> earthquakes){
@@ -55,7 +57,8 @@ public class EarthquakeAdapter extends BaseAdapter {
 
         //creates objects for the specific views for the items (textview...etc)
         TextView magnitudeTextView = (TextView) listItemView.findViewById(R.id.magnitude_text_view);
-        TextView locationTextView = (TextView) listItemView.findViewById(R.id.location_text_view);
+        TextView primaryLocationTextView = (TextView) listItemView.findViewById(R.id.primary_location_text_view);
+        TextView locationOffsetTextView = (TextView) listItemView.findViewById(R.id.location_offset_text_view);
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.date_text_view);
         TextView timeTextView = (TextView) listItemView.findViewById(R.id.time_text_view);
 
@@ -67,7 +70,26 @@ public class EarthquakeAdapter extends BaseAdapter {
        String formattedTime = formatTime(dateObject);
 
         magnitudeTextView.setText(String.valueOf(currentEarthquake.getMagnitude()) );
-        locationTextView.setText(currentEarthquake.getLocation());
+
+        String currentLocation = currentEarthquake.getLocation();
+        String locationOffset;
+        String primaryLocation;
+
+        if (currentLocation.contains(LOCATION_SEPARATOR)){
+
+            int splitIndex = currentLocation.indexOf(LOCATION_SEPARATOR);
+            locationOffset = currentLocation.substring(0,splitIndex) + LOCATION_SEPARATOR;
+            primaryLocation = currentLocation.substring(splitIndex+LOCATION_SEPARATOR.length());
+        }
+        else{
+            ///*FLAG* temporarily hardcoded "near the"
+            locationOffset = "Near the";
+            primaryLocation = currentLocation;
+        }
+
+
+        locationOffsetTextView.setText(locationOffset);
+        primaryLocationTextView.setText(primaryLocation);
         dateTextView.setText(formattedDate);
         timeTextView.setText(formattedTime);
 

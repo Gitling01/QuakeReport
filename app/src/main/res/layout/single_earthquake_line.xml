@@ -15,15 +15,14 @@
         android:text="placeholder_text1" />
 
     <TextView
-        android:id="@+id/location_text_view"
+        android:id="@+id/location_offset_text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="placeholder_text2" />
 
     <TextView
-
-        android:id="@+id/date_text_view"
+        android:id="@+id/primary_location_text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -32,11 +31,20 @@
 
     <TextView
 
-        android:id="@+id/time_text_view"
+        android:id="@+id/date_text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="placeholder_text4" />
+
+
+    <TextView
+
+        android:id="@+id/time_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="placeholder_text5" />
 
 
 </LinearLayout>

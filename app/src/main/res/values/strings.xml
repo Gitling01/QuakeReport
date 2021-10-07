@@ -12,4 +12,8 @@
 -->
 <resources>
     <string name="app_name">Quake Report</string>
+
+    <!--Text that will be added to a location name if no distance from the primary location
+    is specified in the received data-->
+    <string name="near_the">Near the</string>
 </resources>
