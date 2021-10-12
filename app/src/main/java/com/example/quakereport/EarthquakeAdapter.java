@@ -8,10 +8,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import android.graphics.drawable.GradientDrawable;
+
+import androidx.core.content.ContextCompat;
 
 public class EarthquakeAdapter extends BaseAdapter {
 //context, data source and a string separator for the getView method
@@ -68,8 +72,15 @@ public class EarthquakeAdapter extends BaseAdapter {
        Date dateObject = new Date(currentEarthquake.getTimeInMilliseconds());
        String formattedDate = formatDate(dateObject);
        String formattedTime = formatTime(dateObject);
+        dateTextView.setText(formattedDate);
+        timeTextView.setText(formattedTime);
 
-        magnitudeTextView.setText(String.valueOf(currentEarthquake.getMagnitude()) );
+       String formattedMagnitude = formatMagnitude(currentEarthquake.getMagnitude());
+       magnitudeTextView.setText(formattedMagnitude);
+
+        GradientDrawable magnitudeCircle = (GradientDrawable) magnitudeTextView.getBackground();
+        int magnitudeColor = getMagnitudeColor(currentEarthquake.getMagnitude());
+        magnitudeCircle.setColor(magnitudeColor);
 
         String currentLocation = currentEarthquake.getLocation();
         String locationOffset;
@@ -82,16 +93,13 @@ public class EarthquakeAdapter extends BaseAdapter {
             primaryLocation = currentLocation.substring(splitIndex+LOCATION_SEPARATOR.length());
         }
         else{
-            ///*FLAG* temporarily hardcoded "near the"
+            ///*FLAG* temporarily hardcoded "near the" below, because of issues with getString()
             locationOffset = "Near the";
             primaryLocation = currentLocation;
         }
 
-
         locationOffsetTextView.setText(locationOffset);
         primaryLocationTextView.setText(primaryLocation);
-        dateTextView.setText(formattedDate);
-        timeTextView.setText(formattedTime);
 
         //returns the view for the current row
         return listItemView;
@@ -106,5 +114,37 @@ public class EarthquakeAdapter extends BaseAdapter {
         SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
         return timeFormat.format(dateObject);
     }
+
+    private String formatMagnitude(double originalMagnitude){
+        DecimalFormat formatMagnitude = new DecimalFormat("0.0");
+        return formatMagnitude.format(originalMagnitude);
+    }
+
+    /**
+     * FLAG - PLACEHOLDER CODE WHICH IS ONLY SHOWING SOME CASES AND SETTING EVERYTHING ABOVE 4
+     * TO THE "TEN PLUS" COLOR
+     */
+    private int getMagnitudeColor(double originalMagnitude){
+
+        int magnitudeColor;
+
+        if(originalMagnitude > 0 && originalMagnitude < 2) {
+            magnitudeColor = ContextCompat.getColor(mContext, R.color.magnitude1);
+        }
+        else if (originalMagnitude >= 2 && originalMagnitude < 3) {
+           magnitudeColor = ContextCompat.getColor(mContext, R.color.magnitude2);
+        }
+         else if (originalMagnitude >= 3 && originalMagnitude < 4) {
+             magnitudeColor = ContextCompat.getColor(mContext, R.color.magnitude3);
+         }
+         else {
+             magnitudeColor = ContextCompat.getColor(mContext, R.color.magnitude10plus);
+         }
+         return magnitudeColor;
+    }
+
+    /**
+     * END OF FLAGGED SECTION
+     */
 
 }
