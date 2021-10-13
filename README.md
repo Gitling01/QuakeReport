@@ -2,9 +2,9 @@
 An app fetching data from the USGS API -- created alongside Udacity's "Android Basics" course 
 
 ## Screenshots
-Ignore this placeholder image below
 <p float="left">
- <img src="https://user-images.githubusercontent.com/40474308/117542980-d2de7580-afe8-11eb-9777-43bfe426272b.png" width="300" />
+ <img src="https://user-images.githubusercontent.com/40474308/137088419-30a7e9d8-6bfc-4f3f-a4bd-aca46d224d7e.png" width="300" />
+
 </p>
 
 ## Description
