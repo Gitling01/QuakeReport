@@ -9,6 +9,7 @@ Ignore this placeholder image below
 
 ## Description
 * This app fetches and displays data on the ten most recent earthquakes, as obtained from the USGS.gov website using their API. 
+* When users click on a particular list item, they're sent to the USGS web page to see additional details on that earthquake.
 
 ## What I Learned
 * Adding to an existing code base
