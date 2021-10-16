@@ -1,5 +1,5 @@
 # QuakeReport
-An app fetching data from the USGS API -- created alongside Udacity's "Android Basics" course 
+An app displaying data from the USGS API -- created alongside Udacity's "Android Basics" course 
 
 ## Screenshots
 <p float="left">
@@ -9,7 +9,7 @@ An app fetching data from the USGS API -- created alongside Udacity's "Android B
 </p>
 
 ## Description
-* This app fetches and displays data on the ten most recent earthquakes, as obtained from the USGS.gov website using their API. 
+* This app displays data on the ten most recent earthquakes, as obtained from the USGS.gov website using their API. 
 * When users click on a particular list item, they're sent to the USGS web page to see additional details on that earthquake.
 
 ## What I Learned
