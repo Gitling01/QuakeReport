@@ -14,6 +14,8 @@ An app displaying data from the USGS API -- created alongside Udacity's "Android
 
 ## What I Learned
 * Adding to an existing code base
-* Some basics of working with APIs and parsing JSON
+* Networking basics
+* Working with APIs and parsing JSON
+* Permissions in Android
 
 
